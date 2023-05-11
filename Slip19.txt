@@ -1,0 +1,58 @@
+Q1.
+
+<?php
+
+$bigString = readline("Enter the big string: ");
+$smallString = readline("Enter the small string: ");
+
+$position = readline("Enter the position of character to remove: ");
+$numChars = readline("Enter the number of characters to remove: ");
+$removedString = substr($bigString, $position, $numChars);
+$bigString = substr_replace($bigString, '', $position, $numChars);
+
+$position = readline("Enter the position to insert the small string: ");
+$bigString = substr_replace($bigString, $smallString, $position, 0);
+
+$position = readline("Enter the position of character/word to replace: ");
+$numChars = readline("Enter the number of characters/words to replace: ");
+$bigString = substr_replace($bigString, $smallString, $position, $numChars);
+
+echo "Updated big string: " . $bigString . "\n";
+
+?>
+
+====================
+Q2.
+
+import pandas as pd
+
+# 1
+data = {'name': ['John', 'Emma', 'Liam', 'Olivia', 'Noah', 'Ava', 'William', 'Sophia', 'James', 'Isabella'],
+        'age': [25, 28, 30, 27, 24, 29, 26, 31, 23, 26],
+        'percentage': [85.5, 92.3, 78.9, 88.1, 95.6, 82.4, 89.7, 93.2, 80.6, 87.9]}
+df = pd.DataFrame(data)
+
+# Display the dataframe
+print("Dataframe:")
+print(df)
+
+# 2
+description
+print("\nDataframe Shape:", df.shape)
+print("Number of Rows:", len(df))
+print("Number of Columns:", len(df.columns))
+print("\nData Types:")
+print(df.dtypes)
+print("\nFeature Names:")
+print(df.columns.tolist())
+print("\nData Description:")
+print(df.describe())
+
+# 3
+df = df.append(pd.DataFrame({'name': ['John', 'Emma', 'Liam', 'Olivia', 'Noah'],
+                             'age': [25, None, 30, 27, 24],
+                             'percentage': [85.5, 92.3, None, 88.1, 95.6],
+                             'remarks': ['', '', '', '', '']}))
+
+print("\nUpdated Dataframe:")
+print(df)

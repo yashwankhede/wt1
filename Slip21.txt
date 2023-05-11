@@ -1,0 +1,50 @@
+Q1.
+
+<?php
+$high_temps = array(70, 72, 74, 75, 78, 80, 81, 83, 84, 86, 87, 89, 90, 91, 93);
+
+$average = array_sum($high_temps) / count($high_temps);
+
+rsort($high_temps);
+
+$warmest_five = array_slice($high_temps, 0, 5);
+
+echo "Average high temperature: " . round($average, 2) . " degrees Fahrenheit<br>";
+echo "Five warmest high temperatures: " . implode(", ", $warmest_five) . " degrees Fahrenheit";
+?>
+
+=========================
+Q2.
+
+A.
+import pandas as pd
+import matplotlib.pyplot as plt
+
+iris_data = pd.read_csv("iris.csv")
+
+species_frequency = iris_data["Species"].value_counts()
+
+plt.bar(species_frequency.index, species_frequency.values)
+
+plt.title("Frequency of Iris Species")
+plt.xlabel("Species")
+plt.ylabel("Frequency")
+
+plt.show()
+
+B.
+import pandas as pd
+import matplotlib.pyplot as plt
+
+iris_data = pd.read_csv("iris.csv")
+
+plt.hist(iris_data[iris_data["Species"] == "setosa"]["PetalLength"], bins=10, label="setosa")
+plt.hist(iris_data[iris_data["Species"] == "versicolor"]["PetalLength"], bins=10, label="versicolor")
+plt.hist(iris_data[iris_data["Species"] == "virginica"]["PetalLength"], bins=10, label="virginica")
+
+plt.title("Histogram of Iris Species")
+plt.xlabel("Petal Length")
+plt.ylabel("Frequency")
+
+plt.legend()
+plt.show()

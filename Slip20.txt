@@ -1,0 +1,84 @@
+Q1.
+
+def split_array(arr, chunk_size):
+    return [arr[i:i+chunk_size] for i in range(0, len(arr), chunk_size)]
+
+def sort_array_by_value(arr):
+    return dict(sorted(arr.items(), key=lambda item: item[1]))
+
+def filter_even_elements(arr):
+    return {k:v for k,v in arr.items() if v%2==0}
+
+arr = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8}
+while True:
+    print("1. Split array into chunks")
+    print("2. Sort array by values without changing the keys")
+    print("3. Filter even elements from an array")
+    print("4. Exit")
+    choice = int(input("Enter your choice: "))
+    if choice == 1:
+        chunk_size = int(input("Enter chunk size: "))
+        print(split_array(arr, chunk_size))
+    elif choice == 2:
+        print(sort_array_by_value(arr))
+    elif choice == 3:
+        print(filter_even_elements(arr))
+    elif choice == 4:
+        break
+    else:
+        print("Invalid choice. Try again.")
+
+====================
+Q2.
+
+A.
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(123)
+data = np.random.randint(1, 100, 50)
+
+# Line chart
+plt.plot(data, color='blue')
+plt.title('Line Chart')
+plt.xlabel('Index')
+plt.ylabel('Value')
+plt.show()
+
+# Scatter plot
+plt.scatter(range(len(data)), data, color='green')
+plt.title('Scatter Plot')
+plt.xlabel('Index')
+plt.ylabel('Value')
+plt.show()
+
+# Histogram
+plt.hist(data, bins=10, color='red')
+plt.title('Histogram')
+plt.xlabel('Value')
+plt.ylabel('Frequency')
+plt.show()
+
+# Box plot
+plt.boxplot(data, vert=False)
+plt.title('Box Plot')
+plt.xlabel('Value')
+plt.show()
+
+B.
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(1)
+data = np.random.normal(50, 10, 50)
+
+data = np.append(data, [20, 100])
+
+fig, ax = plt.subplots()
+ax.boxplot(data)
+
+ax.set_xlabel('Data')
+ax.set_ylabel('Values')
+ax.set_title('Box plot of Data with Outliers')
+
+plt.show()

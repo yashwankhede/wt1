@@ -1,0 +1,46 @@
+Q1.
+
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "myDB";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$event_title = "Event Title";
+
+$sql = "UPDATE Committee SET status='working' WHERE cno IN 
+        (SELECT cno FROM Event_Committee WHERE eno = 
+         (SELECT eno FROM Event WHERE title = '$event_title'))";
+
+if ($conn->query($sql) === TRUE) {
+  echo "Committee status updated successfully.";
+} else {
+  echo "Error updating committee status: " . $conn->error;
+}
+
+$conn->close();
+?>
+
+==================
+Q2.
+
+import pandas as pd
+
+data = {'country': ['USA', 'China', 'India', 'Brazil', 'Mexico', 'India', 'USA', 'India', 'Brazil', 'Mexico'],
+        'purchased': ['Yes', 'No', 'No', 'No', 'Yes', 'Yes', 'No', 'Yes', 'No', 'Yes']}
+
+df = pd.DataFrame(data)
+
+one_hot = pd.get_dummies(df['country'])
+df = df.drop('country', axis=1)
+df = pd.concat([df, one_hot], axis=1)
+
+df['purchased'] = df['purchased'].map({'Yes': 1, 'No': 0})
+
+df.to_csv('data.csv', index=False)

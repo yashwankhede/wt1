@@ -1,0 +1,80 @@
+Q1.
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>String Operations</title>
+</head>
+<body>
+	<h2>Enter a string:</h2>
+	<form method="post">
+		<input type="text" name="inputString" required>
+		<input type="submit" name="submit" value="Submit">
+	</form>
+	<?php
+	if(isset($_POST['submit'])){
+		$inputString = $_POST['inputString'];
+		echo "<h3>Original String: ".$inputString."</h3>";
+		
+		$words = explode(" ", $inputString);
+		$selectedWords = array_slice($words, 0, 5);
+		echo "<p>First 5 words from the string: ".implode(" ", $selectedWords)."</p>";
+
+		echo "<p>String in Title case: ".ucwords(strtolower($inputString))."</p>";
+
+		echo "<p>Padded string: ".str_pad($inputString, strlen($inputString)+2, "*", STR_PAD_BOTH)."</p>";
+
+		echo "<p>String after removing leading whitespaces: ".ltrim($inputString)."</p>";
+
+		echo "<p>Reverse of the string: ".strrev($inputString)."</p>";
+	}
+	?>
+</body>
+</html>
+
+
+=======================
+Q2.
+
+A.
+import numpy as np
+import matplotlib.pyplot as plt
+
+data = np.random.randint(0, 50, 50)
+
+# Line chart
+plt.plot(data, color='blue')
+plt.title("Line Chart")
+plt.xlabel("X Axis")
+plt.ylabel("Y Axis")
+plt.show()
+
+# Scatter plot
+plt.scatter(range(len(data)), data, color='red')
+plt.title("Scatter Plot")
+plt.xlabel("X Axis")
+plt.ylabel("Y Axis")
+plt.show()
+
+# Histogram
+plt.hist(data, color='green', bins=10)
+plt.title("Histogram")
+plt.xlabel("X Axis")
+plt.ylabel("Y Axis")
+plt.show()
+
+# Box plot
+plt.boxplot(data, vert=False)
+plt.title("Box Plot")
+plt.xlabel("X Axis")
+plt.show()
+
+B.
+import matplotlib.pyplot as plt
+
+subjects = ["Maths", "Science", "English", "History", "Geography"]
+marks = [85, 78, 92, 65, 70]
+
+plt.pie(marks, labels=subjects, autopct='%1.1f%%')
+plt.title("Marks obtained in subjects")
+plt.show()

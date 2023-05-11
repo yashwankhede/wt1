@@ -1,0 +1,65 @@
+Q1.
+
+<?php
+echo "Enter the filename: ";
+$filename = trim(fgets(STDIN));
+
+echo "1. Display type of file\n";
+echo "2. Display last modification time of file\n";
+echo "3. Display the size of file\n";
+echo "4. Delete the file\n";
+echo "Enter your choice: ";
+$choice = trim(fgets(STDIN));
+
+switch($choice) {
+    case 1:
+        echo "Type of file is: " . filetype($filename);
+        break;
+    case 2:
+        echo "Last modification time of file is: " . date("F d Y H:i:s.", filemtime($filename));
+        break;
+    case 3:
+        echo "Size of file is: " . filesize($filename) . " bytes";
+        break;
+    case 4:
+        if(unlink($filename)) {
+            echo "File deleted successfully";
+        } else {
+            echo "Error deleting file";
+        }
+        break;
+    default:
+        echo "Invalid choice";
+}
+?>
+
+===================
+Q2.
+
+A.
+import numpy as np
+import matplotlib.pyplot as plt
+
+arr = np.random.randint(1, 101, size=50)
+plt.plot(arr, color='blue', label='Line chart')
+plt.scatter(range(len(arr)), arr, color='red', label='Scatter plot')
+plt.hist(arr, bins=10, color='green', label='Histogram')
+plt.boxplot(arr, vert=False, labels=['Data'], patch_artist=True, boxprops=dict(facecolor='yellow', color='black'))
+
+plt.title('Random Array Visualization')
+plt.xlabel('Index')
+plt.ylabel('Value')
+
+plt.legend()
+plt.show()
+
+B.
+import matplotlib.pyplot as plt
+
+subjects = ['Math', 'Science', 'English', 'History', 'Geography']
+marks = [90, 85, 92, 88, 95]
+
+plt.pie(marks, labels=subjects, autopct='%1.1f%%')
+plt.title('Marks Distribution')
+
+plt.show()

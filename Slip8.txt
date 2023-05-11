@@ -1,0 +1,69 @@
+Q1.
+
+<html>
+<head>
+	<title>String Comparison Form</title>
+</head>
+<body>
+	<form action="string_comparison.php" method="POST">
+		<label for="largeString">Enter Large String:</label>
+		<input type="text" name="largeString" id="largeString" required><br><br>
+		<label for="smallString">Enter Small String:</label>
+		<input type="text" name="smallString" id="smallString" required><br><br>
+		<input type="submit" name="submit" value="Submit">
+	</form>
+</body>
+</html>
+
+<?php
+	if(isset($_POST['submit'])){
+		$largeString = $_POST['largeString'];
+		$smallString = $_POST['smallString'];
+
+		if(strpos($largeString, $smallString) === 0){
+			echo "<p>The small string appears at the start of the large string.</p>";
+		}
+		else{
+			echo "<p>The small string does not appear at the start of the large string.</p>";
+		}
+
+		$position = strpos($largeString, $smallString);
+		if($position !== false){
+			echo "<p>The small string is present at position " . $position . " in the large string.</p>";
+		}
+		else{
+			echo "<p>The small string is not present in the large string.</p>";
+		}
+
+		$n = 5;
+		$compareLarge = substr($largeString, 0, $n);
+		$compareSmall = substr($smallString, 0, $n);
+
+		if(strtolower($compareLarge) === strtolower($compareSmall)){
+			echo "<p>The first " . $n . " characters of both strings match.</p>";
+		}
+		else{
+			echo "<p>The first " . $n . " characters of both strings do not match.</p>";
+		}
+	}
+?>
+
+==========================
+Q2.
+
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+
+# load data
+df = pd.read_csv('winequality-red.csv')
+
+# separate features and target
+X = df.drop('quality', axis=1)
+y = df['quality']
+
+# standardize data
+scaler = StandardScaler()
+X_std = scaler.fit_transform(X)
+
+# print standardized data
+print(X_std)

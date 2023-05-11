@@ -1,0 +1,105 @@
+Q1.
+
+<form action="calculator.php" method="post">
+  Number 1: <input type="number" name="num1" required><br>
+  Number 2: <input type="number" name="num2" required><br>
+  <input type="radio" name="operation" value="addition" checked> Addition<br>
+  <input type="radio" name="operation" value="subtraction"> Subtraction<br>
+  <input type="radio" name="operation" value="multiplication"> Multiplication<br>
+  <input type="radio" name="operation" value="division"> Division<br>
+  <input type="submit" value="Calculate">
+</form>
+
+<?php
+// PHP script for calculation
+function calculator($num1, $num2, $operation="addition") {
+  switch ($operation) {
+    case "addition":
+      $result = $num1 + $num2;
+      break;
+    case "subtraction":
+      $result = $num1 - $num2;
+      break;
+    case "multiplication":
+      $result = $num1 * $num2;
+      break;
+    case "division":
+      if ($num2 == 0) {
+        $result = "Undefined";
+      } else {
+        $result = $num1 / $num2;
+      }
+      break;
+    default:
+      $result = "Invalid operation";
+      break;
+  }
+  return $result;
+}
+
+// Displaying the result
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $num1 = $_POST["num1"];
+  $num2 = $_POST["num2"];
+  $operation = $_POST["operation"];
+
+  $result = calculator($num1, $num2, $operation);
+
+  echo "The result of $operation is: $result";
+}
+?>
+
+
+==========================
+Q2.
+
+A.
+import numpy as np
+import matplotlib.pyplot as plt
+
+data = np.random.randint(0, 100, size=50)
+
+# Line chart
+plt.plot(data, color='blue')
+plt.title('Line chart')
+plt.xlabel('Index')
+plt.ylabel('Value')
+plt.show()
+
+# Scatter plot
+plt.scatter(range(len(data)), data, color='red')
+plt.title('Scatter plot')
+plt.xlabel('Index')
+plt.ylabel('Value')
+plt.show()
+
+# Histogram
+plt.hist(data, color='green')
+plt.title('Histogram')
+plt.xlabel('Value')
+plt.ylabel('Frequency')
+plt.show()
+
+# Box plot
+plt.boxplot(data, vert=False)
+plt.title('Box plot')
+plt.xlabel('Value')
+plt.show()
+
+
+B.
+import pandas as pd
+
+data = {'name': ['John', 'Amy', 'Steve', 'Kate', 'Mike', 'Sara', 'Chris', 'Jenny', 'David', 'Emily'],
+        'salary': [50000, 60000, 45000, 70000, 55000, None, 65000, 80000, 90000, None],
+        'department': ['Sales', 'Marketing', 'IT', 'Sales', 'IT', 'Marketing', None, 'Finance', 'IT', 'Sales']}
+df = pd.DataFrame(data)
+
+new_data = {'name': ['Jack', 'Tom', 'John', 'Kate', 'Mike', 'Sara', 'Chris', 'Jenny', 'David', 'Emily'],
+            'salary': [50000, None, 45000, 70000, 55000, 75000, 65000, 80000, None, None],
+            'department': ['HR', 'IT', 'Sales', 'Sales', 'IT', 'Marketing', 'Finance', None, 'HR', 'Marketing']}
+df = df.append(pd.DataFrame(new_data), ignore_index=True)
+
+df = df.dropna().drop_duplicates().reset_index(drop=True)
+
+print(df)

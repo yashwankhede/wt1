@@ -1,0 +1,95 @@
+Q1.
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>About My City</title>
+	<style>
+		body {
+			background-color: pink;
+		}
+		h1 {
+			color: blue;
+			text-align: center;
+		}
+		.landmark {
+			font-size: 24px;
+			font-weight: bold;
+			margin-top: 20px;
+		}
+		#landmark1 {
+			color: red;
+			font-family: Arial, sans-serif;
+		}
+		#landmark2 {
+			color: green;
+			font-family: Times New Roman, serif;
+		}
+		#landmark3 {
+			color: purple;
+			font-family: Comic Sans MS, cursive;
+		}
+		img {
+			display: block;
+			margin: 0 auto;
+			margin-top: 20px;
+			width: 50%;
+			border: 3px solid black;
+			border-radius: 10px;
+			box-shadow: 5px 5px 10px grey;
+		}
+	</style>
+</head>
+<body>
+	<h1>My City - Nashik</h1>
+	<div class="landmark" id="landmark1">Landmark 1</div>
+	<div class="landmark" id="landmark2">Landmark 2</div>
+	<div class="landmark" id="landmark3">Landmark 3</div>
+	<img src="image.jpg" alt="City Image">
+</body>
+</html>
+
+
+===========================
+Q2.
+
+A.
+import pandas as pd
+
+df = pd.read_csv('Data.csv')
+
+df['salary'] = df['salary'].fillna(df['salary'].mean())
+df['age'] = df['age'].fillna(df['age'].mean())
+
+print(df)
+
+B.
+import matplotlib.pyplot as plt
+
+names = ['Alice', 'Bob', 'Charlie', 'David', 'Eva']
+salaries = [50000, 65000, 80000, 45000, 70000]
+
+plt.plot(names, salaries)
+plt.xlabel('Name')
+plt.ylabel('Salary')
+plt.title('Salary by Name')
+plt.show()
+
+C.
+import pandas as pd
+import numpy as np
+
+url = 'https://raw.githubusercontent.com/amanthedorkknight\
+         /playing-with-data/master/data/weight-height.csv'
+df = pd.read_csv(url)
+
+print("First 10 rows:")
+print(df.head(10))
+
+print("\nLast 10 rows:")
+print(df.tail(10))
+
+print("\nRandom 20 rows:")
+print(df.sample(20))
+
+print("\nDataset shape:", df.shape)

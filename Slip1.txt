@@ -1,0 +1,27 @@
+Q1.
+
+
+============================
+Q2.
+a.
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('iris.csv')
+species = df['species'].value_counts()
+
+plt.pie(species, labels=species.index)
+plt.show()
+
+
+b.
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('iris.csv')
+species = df['species'].value_counts()
+
+plt.pie(species, labels=species.index)
+plt.show()

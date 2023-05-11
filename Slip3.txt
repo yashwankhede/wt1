@@ -1,0 +1,57 @@
+Q1.
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Company</title>
+	<style>
+		h1 {
+			background-color: green;
+			color: red;
+			font-family: 'Comic Sans MS', sans-serif;
+			font-size: 48px;
+			text-align: center;
+			padding: 30px;
+			margin-top: 0;
+		}
+		p {
+			color: blue;
+			font-size: 24px;
+			margin: 30px;
+		}
+	</style>
+</head>
+<body>
+	<h1>My Company Name</h1>
+	<p>Our company provides high quality products and services to our customers. We are committed to providing exceptional customer service and meeting the needs of our clients.</p>
+</body>
+</html>
+
+
+=======================
+Q2.
+
+A.
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('iris.csv')
+
+fig, axes = plt.subplots(nrows=1, ncols=4, figsize=(10,6))
+
+columns = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width']
+
+for i, ax in enumerate(axes.flatten()):
+    ax.boxplot([df[df['species']==s][columns[i]] for s in df['species'].unique()])
+    ax.set_title(columns[i])
+
+plt.tight_layout()
+plt.show()
+
+
+B.
+import pandas as pd
+
+df = pd.read_csv('height_weight.csv')
+
+print(df.describe())

@@ -1,0 +1,82 @@
+Q1.
+
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "myDB";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$c_name = $_POST["c_name"];
+
+$sql = "SELECT s.name, s.class 
+        FROM Student s, Competition c, Student_Competition sc 
+        WHERE c.c_name = '$c_name' AND c.c_no = sc.c_no AND s.Stud_id = sc.Stud_id AND sc.rank = 1";
+
+$result = $conn->query($sql);
+
+echo "<table><tr><th>Name</th><th>Class</th></tr>";
+if ($result->num_rows > 0) {
+  while($row = $result->fetch_assoc()) {
+    echo "<tr><td>" . $row["name"]. "</td><td>" . $row["class"]. "</td></tr>";
+  }
+} else {
+  echo "<tr><td colspan='2'>0 results</td></tr>";
+}
+echo "</table>";
+
+$conn->close();
+?>
+
+======================
+Q2.
+
+a.
+import numpy as np
+import matplotlib.pyplot as plt
+
+rand_array = np.random.randint(0, 100, 50)
+
+# line chart
+plt.plot(rand_array, color='blue')
+plt.title('Line Chart')
+plt.xlabel('Index')
+plt.ylabel('Value')
+plt.show()
+
+# scatter plot
+plt.scatter(np.arange(len(rand_array)), rand_array, color='red')
+plt.title('Scatter Plot')
+plt.xlabel('Index')
+plt.ylabel('Value')
+plt.show()
+
+# histogram
+plt.hist(rand_array, bins=10, color='green')
+plt.title('Histogram')
+plt.xlabel('Value')
+plt.ylabel('Frequency')
+plt.show()
+
+# box plot
+plt.boxplot(rand_array, vert=False)
+plt.title('Box Plot')
+plt.show()
+
+b.
+import matplotlib.pyplot as plt
+
+subject_names = ['Math', 'English', 'Science', 'History', 'Geography']
+marks_obtained = [85, 70, 90, 75, 80]
+
+# bar chart
+plt.bar(subject_names, marks_obtained, color='orange')
+plt.title('Bar Chart')
+plt.xlabel('Subject')
+plt.ylabel('Marks Obtained')
+plt.show()

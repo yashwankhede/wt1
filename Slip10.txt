@@ -1,0 +1,73 @@
+Q1.
+
+<form action="script.php" method="post">
+  Enter number 1: <input type="text" name="num1"><br>
+  Enter number 2: <input type="text" name="num2"><br>
+  <input type="submit" value="Submit">
+</form>
+
+<?php
+function findMod($num1, $num2) {
+  return $num1 % $num2;
+}
+
+function findPower($num1, $num2) {
+  return pow($num1, $num2);
+}
+
+function findSum($num1) {
+  return ($num1 * ($num1 + 1)) / 2;
+}
+
+function findFactorial($num2) {
+  $factorial = 1;
+  for ($i = 1; $i <= $num2; $i++) {
+    $factorial *= $i;
+  }
+  return $factorial;
+}
+
+if (isset($_POST["num1"]) && isset($_POST["num2"])) {
+  $num1 = $_POST["num1"];
+  $num2 = $_POST["num2"];
+  
+  echo "Mod: " . findMod($num1, $num2) . "<br>";
+  echo "Power: " . findPower($num1, $num2) . "<br>";
+  echo "Sum: " . findSum($num1) . "<br>";
+  echo "Factorial: " . findFactorial($num2) . "<br>";
+}
+?>
+
+
+==========================
+Q2.
+
+A.
+import pandas as pd
+
+url = "http://wiki.stat.ucla.edu/socr/index.php/SOCR_Data_MLB_HeightsWeights"
+df = pd.read_html(url)[0]
+
+mean = df.mean()
+median = df.median()
+
+print("Mean:\n", mean)
+print("\nMedian:\n", median)
+
+B.
+import numpy as np
+
+def manhattan_distance(p1, p2):
+    return np.abs(p1[0]-p2[0]) + np.abs(p1[1]-p2[1])
+
+def sum_manhattan_distances(points):
+    n = len(points)
+    total_distance = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            total_distance += manhattan_distance(points[i], points[j])
+    return total_distance
+
+points = [(1, 2), (3, 5), (6, 2), (8, 9)]
+total_distance = sum_manhattan_distances(points)
+print(total_distance)

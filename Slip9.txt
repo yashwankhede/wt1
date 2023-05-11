@@ -1,0 +1,93 @@
+Q1.
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>String Operations</title>
+</head>
+<body>
+	<form method="post">
+		<label for="input">Enter String:</label><br>
+		<input type="text" id="input" name="input"><br>
+		<label for="separator">Select Separator:</label><br>
+		<select id="separator" name="separator">
+			<option value="#">#</option>
+			<option value="|">|</option>
+			<option value="%">%</option>
+			<option value="@">@</option>
+			<option value="!">!</option>
+			<option value=",">,</option>
+		</select><br>
+		<input type="submit" value="Submit">
+	</form>
+	<br>
+	<?php 
+		if(isset($_POST['input']) && isset($_POST['separator'])) {
+			$input = $_POST['input'];
+			$separator = $_POST['separator'];
+			$words = explode($separator, $input);
+			$last_word = end($words);
+			$separator_replaced = str_replace($separator, "-", $input);
+			echo "<p>Input String: $input</p>";
+			echo "<p>Words After Splitting: ";
+			foreach ($words as $word) {
+				echo "$word ";
+			}
+			echo "</p>";
+			echo "<p>String After Replacing Separator: $separator_replaced</p>";
+			echo "<p>Last Word in String: $last_word</p>";
+		}
+	?>
+</body>
+</html>
+
+
+===========================
+Q2.
+
+A.
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Generate random data
+data = np.random.randint(1, 100, 50)
+
+# Create a figure and axis object
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
+
+# Line chart
+ax1.plot(data, color='blue')
+ax1.set_xlabel('Index')
+ax1.set_ylabel('Value')
+ax1.set_title('Line Chart')
+
+# Scatter plot
+ax2.scatter(np.arange(50), data, color='green')
+ax2.set_xlabel('Index')
+ax2.set_ylabel('Value')
+ax2.set_title('Scatter Plot')
+
+# Show the plot
+plt.show()
+
+B.
+import matplotlib.pyplot as plt
+
+subjects = ['Maths', 'Science', 'English', 'History', 'Geography']
+
+marks = [85, 92, 78, 90, 80]
+
+plt.pie(marks, labels=subjects, autopct='%1.1f%%')
+plt.title('Marks obtained in different subjects')
+plt.show()
+
+C.
+import pandas as pd
+
+df = pd.read_csv('winequality-red.csv')
+
+print(df.describe())
+
+print(df.shape)
+
+print(df.head(3))

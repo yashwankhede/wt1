@@ -1,0 +1,95 @@
+Q1.
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student Result</title>
+</head>
+<body>
+	<h1>Student Result</h1>
+	<form action="" method="post">
+		<table>
+			<thead>
+				<tr>
+					<th>Serial No.</th>
+					<th>Subject Name</th>
+					<th>Marks Obtained (out of 100)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+					$subjects = array('English', 'Maths', 'Science', 'History', 'Geography');
+					for ($i=0; $i<count($subjects); $i++) {
+				?>
+				<tr>
+					<td><?php echo $i+1; ?></td>
+					<td><?php echo $subjects[$i]; ?></td>
+					<td><input type="text" name="marks[]" required></td>
+				</tr>
+				<?php } ?>
+				<tr>
+					<td colspan="3"><input type="submit" value="Submit"></td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+	<?php
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+			$marks = $_POST['marks'];
+			$total_marks = array_sum($marks);
+			$percentage = round(($total_marks / (count($subjects) * 100)) * 100, 2);
+			if ($percentage >= 80) {
+				$grade = 'A';
+			} elseif ($percentage >= 60) {
+				$grade = 'B';
+			} elseif ($percentage >= 40) {
+				$grade = 'C';
+			} else {
+				$grade = 'D';
+			}
+			echo '<h2>Result</h2>';
+			echo '<table>';
+			echo '<tr><td>Total Marks Obtained:</td><td>'.$total_marks.'</td></tr>';
+			echo '<tr><td>Percentage:</td><td>'.$percentage.'%</td></tr>';
+			echo '<tr><td>Grade:</td><td>'.$grade.'</td></tr>';
+			echo '</table>';
+		}
+	?>
+</body>
+</html>
+
+
+========================
+Q2.
+
+A.
+import matplotlib.pyplot as plt
+
+subjects = ["Maths", "Science", "English", "History", "Geography"]
+
+marks = [90, 85, 80, 92, 88]
+
+plt.pie(marks, labels=subjects)
+plt.title("Marks obtained in different subjects")
+plt.show()
+
+plt.bar(subjects, marks)
+plt.title("Marks obtained in different subjects")
+plt.xlabel("Subjects")
+plt.ylabel("Marks")
+plt.show()
+
+
+B.
+import pandas as pd
+
+data = {'Name': ['Alice', 'Bob', 'Charlie', 'David'],
+        'Percentage': [80.2, 90.3, 75.6, 85.7],
+        'Age': [20, 21, 19, 22]}
+df = pd.DataFrame(data)
+
+avg_age = df['Age'].mean()
+avg_percent = df['Percentage'].mean()
+
+print("Average age of students:", avg_age)
+print("Average graduation percentage:", avg_percent)

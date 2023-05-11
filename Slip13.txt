@@ -1,0 +1,72 @@
+Q1.
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chess Board</title>
+	<style type="text/css">
+		table {
+			border-collapse: collapse;
+		}
+		td {
+			height: 50px;
+			width: 50px;
+		}
+		.white {
+			background-color: white;
+		}
+		.black {
+			background-color: black;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<?php
+			for ($i=0; $i<8; $i++) {
+				echo "<tr>";
+				for ($j=0; $j<8; $j++) {
+					if (($i+$j)%2==0) {
+						echo "<td class='white'></td>";
+					} else {
+						echo "<td class='black'></td>";
+					}
+				}
+				echo "</tr>";
+			}
+		?>
+	</table>
+</body>
+</html>
+
+
+=======================
+Q2.
+
+A.
+import pandas as pd
+import matplotlib.pyplot as plt
+
+iris = pd.read_csv('iris.csv')
+
+petal_data = iris[['petal_length', 'petal_width']]
+
+plt.scatter(petal_data['petal_length'], petal_data['petal_width'])
+
+plt.title('Relationship between Petal Length and Width')
+plt.xlabel('Petal Length')
+plt.ylabel('Petal Width')
+
+plt.show()
+
+B.
+import numpy as np
+
+arr = np.array([1, 2, 3, 4, 5, 6])
+
+max_val = np.amax(arr)
+
+min_val = np.amin(arr)
+
+print("Maximum value:", max_val)
+print("Minimum value:", min_val)

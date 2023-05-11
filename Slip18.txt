@@ -1,0 +1,61 @@
+Q1.
+
+<?php
+$assoc_array = array("apple" => 2, "banana" => 4, "cherry" => 6, "date" => 8);
+
+echo "Enter your choice:\n1. Reverse the order of each element's key-value pair.\n2. Traverse the elements in an array in random order.\n3. Convert the array elements into individual variables.\n4. Display the elements of an array along with key.\n";
+
+$choice = (int)readline("Choice: ");
+
+switch ($choice) {
+    case 1:
+        $reversed = array();
+        foreach ($assoc_array as $key => $value) {
+            $reversed[$value] = $key;
+        }
+        print_r($reversed);
+        break;
+    case 2:
+        shuffle($assoc_array);
+        print_r($assoc_array);
+        break;
+    case 3:
+        extract($assoc_array);
+        echo "apple: $apple\nbanana: $banana\ncherry: $cherry\ndate: $date\n";
+        break;
+    case 4:
+        foreach ($assoc_array as $key => $value) {
+            echo "$key => $value\n";
+        }
+        break;
+    default:
+        echo "Invalid choice.\n";
+        break;
+}
+?>
+
+
+==============================
+Q2.
+
+A.
+import pandas as pd
+import seaborn as sns
+
+iris = pd.read_csv('iris.csv')
+sns.boxplot(x='species', y='sepal_length', data=iris)
+sns.boxplot(x='species', y='sepal_width', data=iris)
+sns.boxplot(x='species', y='petal_length', data=iris)
+sns.boxplot(x='species', y='petal_width', data=iris)
+
+
+B.
+import pandas as pd
+
+df = pd.read_csv('height_weight.csv')
+
+print(df.head())
+
+print(df.tail())
+
+print(df.sample(10))

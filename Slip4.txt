@@ -1,0 +1,80 @@
+Q.1
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>List of Books</title>
+</head>
+<body>
+	<h1>List of Books</h1>
+	<table>
+		<tr>
+			<th>Item No</th>
+			<th>Item Name</th>
+			<th>Price</th>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Programming in Python</td>
+			<td>500<span>Rs.</span> 50<span>Paise</span></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Programming in Java</td>
+			<td>345<span>Rs.</span> 00<span>Paise</span></td>
+		</tr>
+	</table>
+</body>
+</html>
+
+==========================
+Q2.
+
+A.
+import numpy as np
+import matplotlib.pyplot as plt
+
+arr = np.random.randint(low=0, high=100, size=50)
+
+# line chart
+plt.plot(arr, color='blue')
+plt.title("Line Chart of Random Integers")
+plt.xlabel("Index")
+plt.ylabel("Value")
+plt.show()
+
+# scatter plot
+plt.scatter(range(len(arr)), arr, color='red')
+plt.title("Scatter Plot of Random Integers")
+plt.xlabel("Index")
+plt.ylabel("Value")
+plt.show()
+
+# histogram
+plt.hist(arr, color='green', bins=10)
+plt.title("Histogram of Random Integers")
+plt.xlabel("Value")
+plt.ylabel("Frequency")
+plt.show()
+
+# box plot
+plt.boxplot(arr)
+plt.title("Box Plot of Random Integers")
+plt.ylabel("Value")
+plt.show()
+
+B.
+import pandas as pd
+
+df = pd.read_csv('User_Data.csv')
+
+print("Shape of Dataframe:", df.shape)
+
+print("Number of Rows:", df.shape[0])
+print("Number of Columns:", df.shape[1])
+
+print("Data Types:\n", df.dtypes)
+
+print("Feature Names:\n", list(df.columns))
+
+print("Description of Data:\n", df.describe())

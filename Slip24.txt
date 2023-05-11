@@ -1,0 +1,59 @@
+Q1.
+
+<?php
+$sourceFile = readline("Enter source file name: ");
+$destinationFile = readline("Enter destination file name: ");
+
+$sourceHandle = fopen($sourceFile, "r");
+$destinationHandle = fopen($destinationFile, "a");
+
+while (!feof($sourceHandle)) {
+    $content = fread($sourceHandle, 8192);
+    fwrite($destinationHandle, $content);
+}
+
+fclose($sourceHandle);
+fclose($destinationHandle);
+
+echo "Content of $sourceFile has been appended to $destinationFile.";
+?>
+
+===================
+Q2.
+
+A.
+import pandas as pd
+import matplotlib.pyplot as plt
+
+iris_data = pd.read_csv("iris.csv")
+
+species_count = iris_data["species"].value_counts()
+
+plt.bar(species_count.index, species_count.values)
+
+plt.xlabel("Species")
+plt.ylabel("Frequency")
+plt.title("Frequency of Iris Species")
+
+plt.show()
+
+
+B.
+import pandas as pd
+import matplotlib.pyplot as plt
+
+iris = pd.read_csv("iris.csv")
+
+setosa = iris[iris['species'] == 'setosa']['sepal_length']
+versicolor = iris[iris['species'] == 'versicolor']['sepal_length']
+virginica = iris[iris['species'] == 'virginica']['sepal_length']
+
+plt.hist(setosa, alpha=0.5, label='setosa')
+plt.hist(versicolor, alpha=0.5, label='versicolor')
+plt.hist(virginica, alpha=0.5, label='virginica')
+
+plt.xlabel('Sepal Length (cm)')
+plt.ylabel('Frequency')
+plt.legend(loc='upper right')
+
+plt.show()

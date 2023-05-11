@@ -1,0 +1,51 @@
+Q1.
+
+<?php
+$array = array("Sagar" => "31", "Vicky" => "41", "Leena" => "39", "Ramesh" => "40");
+
+asort($array);
+echo "Ascending order sort by value: ";
+print_r($array);
+
+ksort($array);
+echo "Ascending order sort by key: ";
+print_r($array);
+
+arsort($array);
+echo "Descending order sort by value: ";
+print_r($array);
+
+krsort($array);
+echo "Descending order sort by key: ";
+print_r($array);
+?>
+
+==========================
+Q2.
+
+A.
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+
+iris = sns.load_dataset('iris')
+
+sns.scatterplot(data=iris, x='sepal_length', y='petal_length', hue='species')
+plt.title('Comparison of Sepal Length and Petal Length')
+plt.xlabel('Sepal Length')
+plt.ylabel('Petal Length')
+plt.show()
+
+B.
+import pandas as pd
+
+data = {
+    'name': ['John', 'Emma', 'Michael', 'Sophia', 'Daniel', 'Olivia', 'William', 'Ava', 'James', 'Mia'],
+    'age': [25, 32, 28, 36, 41, 29, 33, 27, 35, 30],
+    'salary': [5000, 6000, 7000, 5500, 8000, 6500, 7500, 5500, 7000, 6000],
+    'department': ['HR', 'Finance', 'IT', 'Sales', 'Marketing', 'HR', 'IT', 'Sales', 'Finance', 'Marketing']
+}
+
+df = pd.DataFrame(data)
+
+print(df)

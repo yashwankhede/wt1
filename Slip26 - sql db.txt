@@ -1,0 +1,105 @@
+Q1.
+
+sql query
+
+CREATE TABLE Doctor (
+  doc_no INT NOT NULL PRIMARY KEY,
+  dname VARCHAR(50) NOT NULL,
+  address VARCHAR(100) NOT NULL,
+  city VARCHAR(50) NOT NULL,
+  area VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Hospital (
+  hosp_no INT NOT NULL PRIMARY KEY,
+  hname VARCHAR(50) NOT NULL,
+  hcity VARCHAR(50) NOT NULL
+);
+
+ALTER TABLE Doctor ADD COLUMN hosp_no INT NOT NULL;
+ALTER TABLE Doctor ADD FOREIGN KEY (hosp_no) REFERENCES Hospital(hosp_no);
+
+SELECT dname, address, city, area FROM Doctor WHERE hosp_no = (SELECT hosp_no FROM Hospital WHERE hname = 'hospital_name');
+
+php code
+
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "myDB";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$hospital_name = $_GET['hospital_name'];
+
+$stmt = $conn->prepare("SELECT dname, address, city, area FROM Doctor WHERE hosp_no = (SELECT hosp_no FROM Hospital WHERE hname = ?)");
+$stmt->bind_param("s", $hospital_name);
+$stmt->execute();
+$result = $stmt->get_result();
+
+echo "<table>";
+echo "<tr><th>Doctor Name</th><th>Address</th><th>City</th><th>Area</th></tr>";
+while($row = $result->fetch_assoc()) {
+  echo "<tr><td>".$row["dname"]."</td><td>".$row["address"]."</td><td>".$row["city"]."</td><td>".$row["area"]."</td></tr>";
+}
+echo "</table>";
+
+$stmt->close();
+$conn->close();
+?>
+
+
+=============================
+Q2.
+
+A.
+import numpy as np
+import matplotlib.pyplot as plt
+
+arr = np.random.randint(0, 100, 50)
+
+# Display line chart
+plt.plot(arr, color='blue')
+plt.title('Line Chart')
+plt.xlabel('Index')
+plt.ylabel('Value')
+plt.show()
+
+# Display scatter plot
+plt.scatter(np.arange(len(arr)), arr, color='green')
+plt.title('Scatter Plot')
+plt.xlabel('Index')
+plt.ylabel('Value')
+plt.show()
+
+# Display histogram
+plt.hist(arr, color='red', bins=10)
+plt.title('Histogram')
+plt.xlabel('Value')
+plt.ylabel('Frequency')
+plt.show()
+
+# Display box plot
+plt.boxplot(arr, vert=False)
+plt.title('Box Plot')
+plt.xlabel('Value')
+plt.show()
+
+B.
+import matplotlib.pyplot as plt
+
+# Create subject names and marks lists
+subjects = ['Maths', 'Science', 'English', 'History', 'Geography']
+marks = [90, 87, 92, 85, 88]
+
+# Display data in bar chart
+plt.bar(subjects, marks, color='blue')
+plt.title('Subject-wise Marks')
+plt.xlabel('Subjects')
+plt.ylabel('Marks')
+plt.show()

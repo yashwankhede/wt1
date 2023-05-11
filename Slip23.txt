@@ -1,0 +1,60 @@
+Q1.
+
+<?php
+    $stack = array();
+    while (true) {
+        echo "Choose an operation: \n";
+        echo "1. Insert an element in stack\n";
+        echo "2. Delete an element from stack\n";
+        echo "3. Display the contents of stack\n";
+        echo "4. Exit\n";
+        $choice = readline("Enter your choice: ");
+
+        switch ($choice) {
+            case 1:
+                $element = readline("Enter element to insert: ");
+                array_push($stack, $element);
+                break;
+            case 2:
+                if (count($stack) == 0) {
+                    echo "Stack is empty\n";
+                } else {
+                    $element = array_pop($stack);
+                    echo "$element has been deleted from stack\n";
+                }
+                break;
+            case 3:
+                if (count($stack) == 0) {
+                    echo "Stack is empty\n";
+                } else {
+                    echo "Contents of stack: ";
+                    foreach ($stack as $element) {
+                        echo "$element ";
+                    }
+                    echo "\n";
+                }
+                break;
+            case 4:
+                exit();
+            default:
+                echo "Invalid choice, please try again.\n";
+        }
+    }
+?>
+
+========================
+Q2.
+
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler, StandardScaler, Binarizer
+
+data = pd.read_csv("winequality-red.csv")
+
+scaler = MinMaxScaler()
+normalized_data = scaler.fit_transform(data)
+
+standard_scaler = StandardScaler()
+standardized_data = standard_scaler.fit_transform(data)
+
+binarizer = Binarizer(threshold=0.0)
+binarized_data = binarizer.fit_transform(data)
