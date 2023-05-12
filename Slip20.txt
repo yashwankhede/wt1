@@ -28,7 +28,6 @@ while True:
     else:
         print("Invalid choice. Try again.")
 
-====================
 Q2.
 
 A.

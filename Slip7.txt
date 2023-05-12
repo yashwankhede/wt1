@@ -53,7 +53,6 @@ Q1.
   </body>
 </html>
 
-===========================
 Q2.
 
 import pandas as pd

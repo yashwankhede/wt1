@@ -1,7 +1,7 @@
 Q1.
 
 
-============================
+
 Q2.
 a.
 
@@ -18,10 +18,8 @@ plt.show()
 b.
 
 import pandas as pd
-import matplotlib.pyplot as plt
 
-df = pd.read_csv('iris.csv')
-species = df['species'].value_counts()
+df = pd.read_csv('winequality-red.csv')
+stats = df.describe()
 
-plt.pie(species, labels=species.index)
-plt.show()
+print(stats)

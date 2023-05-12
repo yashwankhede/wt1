@@ -8,7 +8,6 @@ $source_content = file_get_contents($source_file);
 file_put_contents($target_file, $source_content);
 ?>
 
-======================
 Q2.
 
 import pandas as pd

@@ -21,7 +21,6 @@ echo "Updated big string: " . $bigString . "\n";
 
 ?>
 
-====================
 Q2.
 
 import pandas as pd

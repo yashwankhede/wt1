@@ -13,7 +13,6 @@ echo "Average high temperature: " . round($average, 2) . " degrees Fahrenheit<br
 echo "Five warmest high temperatures: " . implode(", ", $warmest_five) . " degrees Fahrenheit";
 ?>
 
-=========================
 Q2.
 
 A.

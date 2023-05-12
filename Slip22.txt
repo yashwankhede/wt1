@@ -53,58 +53,25 @@ while(true) {
 
 ?>
 
-======================
 Q2.
 
-<?php
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler, StandardScaler, Normalizer
 
-$queue = array();
+data = pd.read_csv('winequality-red.csv')
 
-while(true) {
-    echo "\nQueue Operations:\n";
-    echo "1. Insert an element in queue\n";
-    echo "2. Delete an element from queue\n";
-    echo "3. Display the contents of queue\n";
-    echo "4. Exit\n";
-    
-    echo "Enter your choice: ";
-    $choice = (int)readline();
-    
-    switch($choice) {
-        case 1:
-            echo "Enter the element to be inserted: ";
-            $element = readline();
-            array_push($queue, $element);
-            echo "$element has been inserted in the queue.\n";
-            break;
-        
-        case 2:
-            if(empty($queue)) {
-                echo "The queue is empty.\n";
-            } else {
-                $element = array_shift($queue);
-                echo "$element has been deleted from the queue.\n";
-            }
-            break;
-        
-        case 3:
-            if(empty($queue)) {
-                echo "The queue is empty.\n";
-            } else {
-                echo "The elements in the queue are: ";
-                foreach($queue as $element) {
-                    echo "$element ";
-                }
-                echo "\n";
-            }
-            break;
-        
-        case 4:
-            exit;
-        
-        default:
-            echo "Invalid choice. Please try again.\n";
-    }
-}
+scaler = MinMaxScaler()
+rescaled_data = scaler.fit_transform(data)
 
-?>
+standardizer = StandardScaler()
+standardized_data = standardizer.fit_transform(data)
+
+normalizer = Normalizer()
+normalized_data = normalizer.fit_transform(data)
+
+print("Rescaled Data:")
+print(rescaled_data)
+print("\nStandardized Data:")
+print(standardized_data)
+print("\nNormalized Data:")
+print(normalized_data)

@@ -18,7 +18,6 @@ fclose($destinationHandle);
 echo "Content of $sourceFile has been appended to $destinationFile.";
 ?>
 
-===================
 Q2.
 
 A.

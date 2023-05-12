@@ -20,7 +20,6 @@ echo "Descending order sort by key: ";
 print_r($array);
 ?>
 
-==========================
 Q2.
 
 A.

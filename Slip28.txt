@@ -23,7 +23,6 @@ foreach ($lines as $line) {
 echo '</table>';
 ?>
 
-=======================
 Q2.
 
 import pandas as pd
